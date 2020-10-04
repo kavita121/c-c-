@@ -7,6 +7,26 @@ typedef struct node{
   node * next;
 }node;
 node *h;
+
+// create copies of a list
+node* copy(node* p) {
+    node* begin = NULL;
+    node* end = NULL;
+
+    while (p) {
+        node* aux = (node*) malloc(sizeof(node));
+        aux->data = p->data;
+        aux->next = NULL;
+
+        if (end) end->next = aux;
+        else begin = aux;
+
+        end = aux;
+        p = p->next;
+    }
+    return begin;
+}
+
 void insert(int x,int n){
     node *t1;
     t1=(node*)malloc(sizeof(node));
